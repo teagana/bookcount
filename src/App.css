@@ -1,3 +1,15 @@
+/* Navbar */
+nav {
+  font-size: 18px;
+  background-color: transparent;
+}
+.navbar-brand {
+  font-size: 30px;
+}
+#add-book-link {
+  font-weight: bold;
+}
+
 /* ManualAddBook.js */
 #manualentry {
   width: 60%;
@@ -36,6 +48,7 @@
   margin-bottom: 0 !important;
 }
 #books .form-group,
-#pages .form-group {
+#pages .form-group,
+#list {
   padding-left: 10px;
 }

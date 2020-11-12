@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddBook from "./AddBook";
 import "./App.css";
+import Booklist from "./Booklist";
 import ManualAddBook from "./ManualAddBook";
 import PageNotFound from "./PageNotFound";
 import SetGoals from "./SetGoals";
@@ -26,6 +27,7 @@ function App() {
         </Route>
         <Route path="/booklist" exact={true}>
           {/* list of all books */}
+          <Booklist />
         </Route>
         <Route path="*">
           {/* 404 page */}
