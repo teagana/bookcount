@@ -1,0 +1,41 @@
+/* ManualAddBook.js */
+#manualentry {
+  width: 60%;
+}
+#manual-submit {
+  width: 200px;
+}
+
+/* AddBook.js */
+#title-only,
+.goal-input {
+  background-color: transparent;
+  border-left-style: hidden;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-radius: initial;
+  border-color: lightgray;
+}
+#title-only:focus,
+.goal-input:focus {
+  outline: transparent;
+  border-color: black;
+  box-shadow: none;
+}
+#content {
+  height: 100vh;
+}
+#content .row {
+  min-height: 90vh;
+  max-height: 100vh;
+}
+
+/* SetGoals.js */
+.form-group .goal-label {
+  margin-right: 10px;
+  margin-bottom: 0 !important;
+}
+#books .form-group,
+#pages .form-group {
+  padding-left: 10px;
+}
