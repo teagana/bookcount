@@ -38,7 +38,7 @@ nav {
   height: 100vh;
 }
 #content .row {
-  min-height: 90vh;
+  min-height: 80vh;
   max-height: 100vh;
 }
 
@@ -51,4 +51,10 @@ nav {
 #pages .form-group,
 #list {
   padding-left: 10px;
+}
+
+/* Home.js */
+.graph {
+  height: 300px;
+  width: 500px;
 }

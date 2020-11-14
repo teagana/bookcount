@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddBook from "./AddBook";
 import "./App.css";
 import Booklist from "./Booklist";
+import Home from "./Home";
 import ManualAddBook from "./ManualAddBook";
 import PageNotFound from "./PageNotFound";
 import SetGoals from "./SetGoals";
@@ -12,6 +13,7 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           {/* home */}
+          <Home />
         </Route>
         <Route path="/add_book" exact={true}>
           {/* enter a title page */}
