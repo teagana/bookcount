@@ -1,6 +1,5 @@
 [[redirects]]
   from = "/api/*"
-  // CHANGE THIS URL
   to = "https://bookcount.herokuapp.com/api/:splat"
   status = 200
 
