@@ -18,8 +18,10 @@ export default function AddBook() {
 
     // BOOK MOOCH API CALL
     getBookInfo(title).then((response) => {
-      console.log("return in add book", response[0]);
-      setBookInfo(response[0]);
+      // console.log("return in add book", response[0]);
+      // setBookInfo(response[0]);
+      console.log("return in add book", response);
+      setBookInfo(response);
     });
 
     setIsModalShown(true);

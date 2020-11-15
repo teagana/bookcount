@@ -6,17 +6,21 @@ import { createBook } from "./api";
 export default function ConfirmBookInfo({ onClose, bookInfo }) {
   let history = useHistory();
 
+  // user indicated they wanted to change some of the book info;
+  // take them to manual entry page and pre-fill applicable inputs
   function toManualEntry() {
     onClose();
+    console.log("genres", bookInfo.Topics);
     history.push("/add_book_manual", {
       title: bookInfo.Title,
       author: bookInfo.Author,
       genre: bookInfo.Topics ? bookInfo.Topics[0] : "",
-      pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
+      pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : "",
     }); // go to manual add page with parameters
   }
 
-  // ADD PARAMETERS FOR BOOK INFO
+  // user doesn't want to change any of bookmooch's info
+  // take them back to the homepage
   function acceptBookInfo() {
     // date shenanigans
     const today = new Date(Date.now());
@@ -30,7 +34,7 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
       pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
     }).then((response) => {
       onClose();
-      history.push("/"); // go gack to home page
+      history.push("/"); // go back to home page
     });
   }
 
@@ -41,7 +45,6 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              {/* <h5 className="modal-title">Delete Issue</h5> */}
               <button
                 type="button"
                 className="close"

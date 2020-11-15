@@ -25,18 +25,50 @@
       "id": 2
     },
     {
+      "title": "Ella Enchanted",
+      "author": "Gail Carson Levine",
+      "genre": "",
+      "pagecount": 232,
+      "timestamp": "2020-11-15T20:00:33.758Z",
+      "id": 4
+    },
+    {
+      "title": "How to Win Friends & Influence People",
+      "author": "Dale Carnegie",
+      "genre": "None",
+      "timestamp": "2020-11-15T20:20:40.368Z",
+      "pagecount": 0,
+      "id": 5
+    },
+    {
+      "title": "How to Win Friends & Influence People",
+      "author": "Dale Carnegie",
+      "genre": "",
+      "pagecount": 0,
+      "timestamp": "2020-11-15T20:21:16.025Z",
+      "id": 6
+    },
+    {
+      "title": "How to Win Friends & Influence People",
+      "author": "Dale Carnegie",
+      "genre": "",
+      "pagecount": "",
+      "timestamp": "2020-11-15T20:36:42.360Z",
+      "id": 7
+    },
+    {
       "title": "Harry Potter and the Philosopher's Stone (Book 1)",
       "author": "J.K. Rowling",
       "genre": "Steampunk",
-      "timestamp": "2020-11-15T11:45:37.748Z",
       "pagecount": 224,
-      "id": 3
+      "timestamp": "2020-11-15T20:43:51.958Z",
+      "id": 8
     }
   ],
   "goals": {
     "books_this_year": 0,
     "books_this_month": 0,
-    "pages_this_year": 0,
+    "pages_this_year": 9,
     "pages_this_month": 1
   }
 }

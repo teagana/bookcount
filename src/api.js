@@ -59,28 +59,27 @@ export function getBookInfo(title) {
       },
     }
   ).then((response) => {
-    let responseData = response
-      .json()
-      .then((books) => {
-        let ISBN = books[0].ISBN;
-        console.log("books", books, ISBN);
+    let responseData = response.json().then((books) => {
+      let ISBN = books[0].ISBN;
+      console.log("books", books, ISBN);
+      return books[0];
 
-        return fetch(
-          `${proxy}http://api.bookmooch.com/api/asin?asins=${ISBN}&o=json`,
-          {
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        );
-      })
-      .then((bookResponse) => {
-        let bookData = bookResponse.json().then((bookData) => {
-          console.log(bookData);
-          return bookData;
-        });
-        return bookData;
-      });
+      //     return fetch(
+      //       `${proxy}http://api.bookmooch.com/api/asin?asins=${ISBN}&o=json`,
+      //       {
+      //         headers: {
+      //           Accept: "application/json",
+      //         },
+      //       }
+      //     );
+      //   })
+      //   .then((bookResponse) => {
+      //     let bookData = bookResponse.json().then((bookData) => {
+      //       console.log(bookData);
+      //       return bookData;
+      //     });
+      //     return bookData;
+    });
     return responseData;
   });
 }
