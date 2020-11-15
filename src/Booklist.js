@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { getAllBooks } from "./api";
 
@@ -35,12 +34,12 @@ export default function Booklist() {
                   {" | "}
                   <span className="pr-1">{book.pagecount}</span>
                   {" / "}
-                  <a
+                  <span
                     className="text-danger delete-link"
                     onClick={() => deleteBook(book.id)}
                   >
                     delete
-                  </a>
+                  </span>
                 </div>
               );
             })}
