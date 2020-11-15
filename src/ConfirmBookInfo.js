@@ -19,10 +19,10 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
 
     createBook({
       title: bookInfo.Title,
-      genre: bookInfo.Author,
-      author: bookInfo.Topics[0],
+      author: bookInfo.Author,
+      genre: bookInfo.Topics ? bookInfo.Topics[0] : "None",
       timestamp: today,
-      pagecount: Number(bookInfo.NumberOfPages),
+      pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
     }).then((response) => {
       onClose();
       history.push("/"); // go gack to home page
@@ -49,29 +49,41 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
             </div>
             {/* info from bookmooch api call */}
             <div className="modal-body">
-              <p>title: {bookInfo && bookInfo.Title}</p>
-              <p>author: {bookInfo && bookInfo.Author}</p>
-              <p>genre: {bookInfo && bookInfo.Topics[0]}</p>
-              <p>pagecount: {bookInfo && bookInfo.NumberOfPages}</p>
+              <p>
+                <span className="font-weight-bold">title:</span>{" "}
+                {bookInfo && bookInfo.Title}
+              </p>
+              <p>
+                <span className="font-weight-bold">author:</span>{" "}
+                {bookInfo && bookInfo.Author}
+              </p>
+              <p>
+                <span className="font-weight-bold">genre:</span>{" "}
+                {bookInfo && bookInfo.Topics && bookInfo.Topics[0]}
+              </p>
+              <p>
+                <span className="font-weight-bold">pagecount:</span>{" "}
+                {bookInfo && bookInfo.NumberOfPages}
+              </p>
               <br />
               <p>does this info look correct?</p>
             </div>
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-primary mr-auto"
                 // data-dismiss="modal"
                 // ADD PARAMETERS FOR BOOK INFO
                 onClick={() => acceptBookInfo()}
               >
-                yes
+                yes, looks good!
               </button>
               <button
                 type="button"
                 className="btn btn-danger"
                 onClick={toManualEntry}
               >
-                no
+                no, i need to change something
               </button>
             </div>
           </div>
