@@ -8,7 +8,12 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
 
   function toManualEntry() {
     onClose();
-    history.push("/add_book_manual"); // go to manual add page
+    history.push("/add_book_manual", {
+      title: bookInfo.Title,
+      author: bookInfo.Author,
+      genre: bookInfo.Topics ? bookInfo.Topics[0] : "",
+      pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
+    }); // go to manual add page with parameters
   }
 
   // ADD PARAMETERS FOR BOOK INFO

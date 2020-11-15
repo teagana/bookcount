@@ -1,11 +1,30 @@
 import React, { useState } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
 
 export default function ManualAddBook() {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [genre, setGenre] = useState("");
-  const [pagecount, setPagecount] = useState("");
+  const location = useLocation();
+  let history = useHistory();
+
+  let titleState = "";
+  let authorState = "";
+  let genreState = "";
+  let pagecountState = "";
+
+  // if there is state passed in from the modal, capture it
+  if (typeof location.state !== "undefined") {
+    // console.log(typeof location.state);
+    titleState = location.state.title;
+    authorState = location.state.author;
+    genreState = location.state.genre;
+    pagecountState = location.state.pagecount;
+  }
+
+  // console.log(titleState, "titlestate");
+  const [title, setTitle] = useState(titleState);
+  const [author, setAuthor] = useState(authorState);
+  const [genre, setGenre] = useState(genreState);
+  const [pagecount, setPagecount] = useState(pagecountState);
 
   // functions to handle state for inputs
   function handleTitleChange(event) {
@@ -30,6 +49,11 @@ export default function ManualAddBook() {
 
     // make sure every input isn't empty
     // make sure the pagecount entry is a number
+
+    // createBook API call!!
+
+    // redirect to home page (doesn't seem to be working??)
+    history.push("/");
   }
 
   return (
