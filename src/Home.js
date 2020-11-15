@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { ResponsiveLine } from "@nivo/line";
+import { getHomePageInfo } from "./api";
 
 export default function Home() {
+  useEffect(() => {
+    getHomePageInfo().then((info) => {
+      console.log(info);
+    });
+  }, []);
+
   let data = [
     {
       id: "",

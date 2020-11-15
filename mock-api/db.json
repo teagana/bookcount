@@ -1,67 +1,51 @@
 {
   "books": [
     {
-      "id": 0,
-      "title": "Percy Jackson",
-      "genre": "Fantasy",
-      "author": "Rick Riordan",
-      "timestamp": "",
-      "pagecount": 357
-    },
-    {
-      "id": 1,
-      "title": "Eragon",
-      "genre": "Fantasy",
-      "author": "Christopher Paolini",
-      "timestamp": "",
-      "pagecount": 500
-    },
-    {
       "title": "Hello, Darkness",
       "author": "Sandra Brown",
-      "genre": "None",
-      "timestamp": "2020-11-15T11:13:34.915Z",
-      "pagecount": 0,
+      "genre": "Fantasy",
+      "timestamp": "2019-11-15T11:13:34.915Z",
+      "pagecount": 100,
       "id": 2
     },
     {
       "title": "Ella Enchanted",
       "author": "Gail Carson Levine",
-      "genre": "",
-      "pagecount": 232,
+      "genre": "Fantasy",
+      "pagecount": 200,
       "timestamp": "2020-11-15T20:00:33.758Z",
       "id": 4
     },
     {
       "title": "How to Win Friends & Influence People",
       "author": "Dale Carnegie",
-      "genre": "None",
-      "timestamp": "2020-11-15T20:20:40.368Z",
-      "pagecount": 0,
+      "genre": "Self Help",
+      "timestamp": "2020-02-15T20:20:40.368Z",
+      "pagecount": 300,
       "id": 5
     },
     {
       "title": "How to Win Friends & Influence People",
       "author": "Dale Carnegie",
-      "genre": "",
-      "pagecount": 0,
-      "timestamp": "2020-11-15T20:21:16.025Z",
+      "genre": "Self Help",
+      "pagecount": 300,
+      "timestamp": "2020-05-15T20:21:16.025Z",
       "id": 6
     },
     {
       "title": "How to Win Friends & Influence People",
       "author": "Dale Carnegie",
-      "genre": "",
-      "pagecount": "",
-      "timestamp": "2020-11-15T20:36:42.360Z",
+      "genre": "Self Help",
+      "pagecount": 300,
+      "timestamp": "2020-04-15T20:36:42.360Z",
       "id": 7
     },
     {
       "title": "Harry Potter and the Philosopher's Stone (Book 1)",
       "author": "J.K. Rowling",
       "genre": "Steampunk",
-      "pagecount": 224,
-      "timestamp": "2020-11-15T20:43:51.958Z",
+      "pagecount": 400,
+      "timestamp": "2020-06-15T20:43:51.958Z",
       "id": 8
     }
   ],

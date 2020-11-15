@@ -15,7 +15,7 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
       title: bookInfo.Title,
       author: bookInfo.Author,
       genre: bookInfo.Topics ? bookInfo.Topics[0] : "",
-      pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : "",
+      pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
     }); // go to manual add page with parameters
   }
 
