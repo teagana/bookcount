@@ -9,6 +9,7 @@ export default function SetGoals() {
   const [pagesThisYear, setPagesThisYear] = useState("");
   const [pagesThisMonth, setPagesThisMonth] = useState("");
 
+  // use states for all four possible errors
   const [booksThisYearError, setBooksThisYearError] = useState("");
   const [booksThisMonthError, setBooksThisMonthError] = useState("");
   const [pagesThisYearError, setPagesThisYearError] = useState("");
@@ -36,7 +37,7 @@ export default function SetGoals() {
     let pagesThisMonthFlag = !isNaN(pagesThisMonth) ? true : false;
 
     // save goals function from api
-    // if all of the things are numbers
+    // if all of the inputs are numbers
     if (
       booksThisYearFlag &&
       booksThisMonthFlag &&
@@ -56,6 +57,7 @@ export default function SetGoals() {
       setPagesThisYearError("");
       setPagesThisMonthError("");
 
+      // make api call to save goal inputs
       saveGoals(goals).then((response) => {
         console.log(response);
       });

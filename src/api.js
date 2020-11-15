@@ -32,7 +32,7 @@ export function saveGoals(goals) {
   });
 }
 
-// does the id autoincrement
+// does the id autoincrement?
 export function createBook(book) {
   return fetch("/api/books", {
     method: "POST",
@@ -43,4 +43,12 @@ export function createBook(book) {
   }).then((response) => {
     return response.json();
   });
+}
+
+// bookmooch get book's info
+export function getBookInfo(title) {
+  return fetch(
+    `http://api.bookmooch.com/api/search?txt=${encodeURI(title)}&db=bm&o=json`,
+    {}
+  );
 }
