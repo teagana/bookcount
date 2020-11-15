@@ -45,10 +45,42 @@ export function createBook(book) {
   });
 }
 
+const proxy = "https://cors-anywhere.herokuapp.com/";
+
 // bookmooch get book's info
 export function getBookInfo(title) {
   return fetch(
-    `http://api.bookmooch.com/api/search?txt=${encodeURI(title)}&db=bm&o=json`,
-    {}
-  );
+    `${proxy}http://api.bookmooch.com/api/search?txt=${encodeURI(
+      title
+    )}&db=bm&o=json`,
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  ).then((response) => {
+    let responseData = response
+      .json()
+      .then((books) => {
+        let ISBN = books[0].ISBN;
+        console.log("books", books, ISBN);
+
+        return fetch(
+          `${proxy}http://api.bookmooch.com/api/asin?asins=${ISBN}&o=json`,
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+      })
+      .then((bookResponse) => {
+        let bookData = bookResponse.json().then((bookData) => {
+          console.log(bookData);
+          return bookData;
+        });
+        return bookData;
+      });
+    return responseData;
+  });
 }

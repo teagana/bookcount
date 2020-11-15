@@ -3,12 +3,12 @@ import { createPortal } from "react-dom";
 import { useHistory } from "react-router-dom";
 import { createBook } from "./api";
 
-export default function ConfirmBookInfo({ onClose }) {
+export default function ConfirmBookInfo({ onClose, bookInfo }) {
   let history = useHistory();
 
   function toManualEntry() {
     onClose();
-    history.push("/add_book_manual");
+    history.push("/add_book_manual"); // go to manual add page
   }
 
   // ADD PARAMETERS FOR BOOK INFO
@@ -17,16 +17,16 @@ export default function ConfirmBookInfo({ onClose }) {
     const today = new Date(Date.now());
     console.log(today.getMonth(), today.getFullYear());
 
-    // createBook({
-    //   title: "",
-    //   genre: "",
-    //   author: "",
-    //   timestamp: "",
-    //   pagecount: 0,
-    // }).then((response) => {
-    //   onClose();
-    //   return <Redirect to={"/"} />;
-    // });
+    createBook({
+      title: bookInfo.Title,
+      genre: bookInfo.Author,
+      author: bookInfo.Topics[0],
+      timestamp: today,
+      pagecount: Number(bookInfo.NumberOfPages),
+    }).then((response) => {
+      onClose();
+      history.push("/"); // go gack to home page
+    });
   }
 
   return createPortal(
@@ -49,10 +49,10 @@ export default function ConfirmBookInfo({ onClose }) {
             </div>
             {/* info from bookmooch api call */}
             <div className="modal-body">
-              <p>[title]</p>
-              <p>[author]</p>
-              <p>[genre]</p>
-              <p>[pagecount]</p>
+              <p>title: {bookInfo && bookInfo.Title}</p>
+              <p>author: {bookInfo && bookInfo.Author}</p>
+              <p>genre: {bookInfo && bookInfo.Topics[0]}</p>
+              <p>pagecount: {bookInfo && bookInfo.NumberOfPages}</p>
               <br />
               <p>does this info look correct?</p>
             </div>

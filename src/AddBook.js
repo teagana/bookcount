@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { getBookInfo } from "./api";
 import ConfirmBookInfo from "./ConfirmBookInfo";
 import Navbar from "./Navbar";
 
 export default function AddBook() {
   const [isModalShown, setIsModalShown] = useState(false);
   const [title, setTitle] = useState("");
+  const [bookInfo, setBookInfo] = useState();
 
   function handleTitleChange(event) {
     setTitle(event.target.value);
@@ -15,6 +17,10 @@ export default function AddBook() {
     event.preventDefault();
 
     // BOOK MOOCH API CALL
+    getBookInfo(title).then((response) => {
+      console.log("return in add book", response[0]);
+      setBookInfo(response[0]);
+    });
 
     setIsModalShown(true);
   }
@@ -29,7 +35,9 @@ export default function AddBook() {
       <div id="content">
         <Navbar />
         {/* only show modal upon submit */}
-        {isModalShown && <ConfirmBookInfo onClose={hideModal} />}
+        {isModalShown && (
+          <ConfirmBookInfo onClose={hideModal} bookInfo={bookInfo} />
+        )}
 
         <div className="container">
           <div className="row align-items-center">
