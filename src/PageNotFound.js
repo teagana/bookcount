@@ -8,7 +8,7 @@ export default function PageNotFound() {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <div className="container mt-3">
         <h3>Page not found.</h3>
         <p>
           The requested URL <code>{location.pathname}</code> does not exist on

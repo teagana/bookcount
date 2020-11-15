@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import { getAllBooks } from "./api";
+import { getAllBooks, destroyBook } from "./api";
 
 export default function Booklist() {
   const [books, setBooks] = useState();
@@ -14,6 +14,14 @@ export default function Booklist() {
 
   function deleteBook(id) {
     console.log("delete book function called");
+    destroyBook(id).then((response) => {
+      console.log(response);
+
+      // refresh the books
+      getAllBooks().then((books) => {
+        setBooks(books);
+      });
+    });
   }
 
   return (
@@ -25,7 +33,7 @@ export default function Booklist() {
           {books &&
             books.map((book) => {
               return (
-                <div className="list-item mt-2">
+                <div key={book.id} className="list-item mt-2">
                   <span>{book.title}</span>
                   {" | "}
                   <span>{book.author}</span>
