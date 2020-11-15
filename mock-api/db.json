@@ -1,0 +1,26 @@
+{
+  "books": [
+    {
+      "id": 0,
+      "title": "Percy Jackson",
+      "genre": "Fantasy",
+      "author": "Rick Riordan",
+      "timestamp": "",
+      "pagecount": 357
+    },
+    {
+      "id": 1,
+      "title": "Eragon",
+      "genre": "Fantasy",
+      "author": "Christopher Paolini",
+      "timestamp": "",
+      "pagecount": 500
+    }
+  ],
+  "goals": {
+    "books_this_year": 0,
+    "books_this_month": 0,
+    "pages_this_year": 0,
+    "pages_this_month": 0
+  }
+}

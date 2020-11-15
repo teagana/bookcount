@@ -58,3 +58,9 @@ nav {
   height: 300px;
   width: 500px;
 }
+
+/* Booklist.js */
+.delete-link {
+  cursor: pointer;
+  font-weight: bold;
+}

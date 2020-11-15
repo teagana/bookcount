@@ -3,16 +3,9 @@ import Navbar from "./Navbar";
 import { ResponsiveLine } from "@nivo/line";
 
 export default function Home() {
-  // make sure parent container have a defined height when using
-  // responsive component, otherwise height will be 0 and
-  // no chart will be rendered.
-  // website examples showcase many properties,
-  // you'll often use just a few of them.
-
   let data = [
     {
-      id: "japan",
-      color: "hsl(289, 100%, 57%)",
+      id: "",
       data: [
         {
           x: "jan",
@@ -65,7 +58,7 @@ export default function Home() {
     <ResponsiveLine
       data={data}
       colors={{ scheme: colorScheme }}
-      margin={{ top: 30, right: 20, bottom: 60, left: 60 }}
+      margin={{ top: 20, right: 20, bottom: 60, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -82,7 +75,7 @@ export default function Home() {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "months",
+        legend: "",
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -136,15 +129,38 @@ export default function Home() {
       <div className="container-fluid">
         <div className="row justify-content-center mt-4">
           <div className="col-6 pl-5">
-            <h3>books</h3>
-            <div id="books-this-year" className="graph">
-              {thisYear(data, "books", "set3")}
+            <h3>
+              books: <span id="total-books">x</span>
+            </h3>
+            <div className="mt-4">
+              <h5 className="pl-3">
+                this year: <span>x / y</span>
+              </h5>
+              <div id="books-this-year" className="graph">
+                {thisYear(data, "books", "set3")}
+              </div>
+              <h5 className="pl-3">
+                this month: <span>x / y</span>
+              </h5>
+              <h5 className="pl-3 mt-3">
+                most-read genre: <span>_____</span>
+              </h5>
             </div>
           </div>
           <div className="col-6 pl-5">
-            <h3>pages</h3>
-            <div id="page-this-year" className="graph">
-              {thisYear(data, "pages", "accent")}
+            <h3>
+              pages: <span id="total-pages">x</span>
+            </h3>
+            <div className="mt-4">
+              <h5 className="pl-3">
+                this year: <span>x / y</span>
+              </h5>
+              <div id="page-this-year" className="graph">
+                {thisYear(data, "pages", "accent")}
+              </div>
+              <h5 className="pl-3">
+                this month: <span>x / y</span>
+              </h5>
             </div>
           </div>
         </div>
