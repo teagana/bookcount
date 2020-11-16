@@ -33,7 +33,7 @@ export default function Home() {
 
       // hide the loader
       setShowLoading(false);
-    }
+    } // eslint-disable-next-line
   }, [homeInfo]);
 
   function formatGraphData() {
