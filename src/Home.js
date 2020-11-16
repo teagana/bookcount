@@ -4,7 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 import { getHomePageInfo } from "./api";
 import Loading from "./Loading";
 import { ToastContainer, toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const [homeInfo, setHomeInfo] = useState();
@@ -17,7 +17,8 @@ export default function Home() {
   document.title = "home | bookcount";
 
   // for notification
-  const location = useLocation();
+  let history = useHistory();
+
   const successfulCreationNotif = () => toast("successfully added book!");
 
   useEffect(() => {
@@ -42,14 +43,13 @@ export default function Home() {
       // hide the loader
       setShowLoading(false);
 
-      console.log("notif", location.state);
-
-      // show notification
-      if (typeof location.state !== "undefined") {
-        if (location.state.successNotif) {
-          console.log("in if statement");
+      // show notification if coming from one of the add pages
+      if (typeof history.location.state !== "undefined") {
+        if (history.location.state.successNotif) {
+          history.location.state.successNotif = false;
+          console.log(history.location.state);
           successfulCreationNotif();
-          location.state.successNotif = false;
+          history.push("/");
         }
       }
     } // eslint-disable-next-line
@@ -174,7 +174,15 @@ export default function Home() {
                   </span>
                 </h3>
                 <div className="mt-4">
-                  <h5 className="pl-3">
+                  <h5
+                    className="pl-3"
+                    style={
+                      homeInfo &&
+                      (homeInfo.booksThisYear >= homeInfo.goals.books_this_year
+                        ? { color: "#4BB543" }
+                        : {})
+                    }
+                  >
                     this year:{" "}
                     <span className="font-weight-normal">
                       {homeInfo && homeInfo.booksThisYear} /{" "}
@@ -184,7 +192,16 @@ export default function Home() {
                   <div id="books-this-year" className="graph">
                     {bookGraphData && thisYear(bookGraphData, "books", "set3")}
                   </div>
-                  <h5 className="pl-3">
+                  <h5
+                    className="pl-3"
+                    style={
+                      homeInfo &&
+                      (homeInfo.booksThisMonth >=
+                      homeInfo.goals.books_this_month
+                        ? { color: "#4BB543" }
+                        : {})
+                    }
+                  >
                     this month:{" "}
                     <span className="font-weight-normal">
                       {homeInfo && homeInfo.booksThisMonth} /{" "}
@@ -207,7 +224,15 @@ export default function Home() {
                   </span>
                 </h3>
                 <div className="mt-4">
-                  <h5 className="pl-3">
+                  <h5
+                    className="pl-3"
+                    style={
+                      homeInfo &&
+                      (homeInfo.pagesThisYear >= homeInfo.goals.pages_this_year
+                        ? { color: "#4BB543" }
+                        : {})
+                    }
+                  >
                     this year:{" "}
                     <span className="font-weight-normal">
                       {homeInfo && homeInfo.pagesThisYear} /{" "}
@@ -218,7 +243,16 @@ export default function Home() {
                     {pageGraphData &&
                       thisYear(pageGraphData, "pages", "accent")}
                   </div>
-                  <h5 className="pl-3">
+                  <h5
+                    className="pl-3"
+                    style={
+                      homeInfo &&
+                      (homeInfo.pagesThisMonth >=
+                      homeInfo.goals.pages_this_month
+                        ? { color: "#4BB543" }
+                        : {})
+                    }
+                  >
                     this month:{" "}
                     <span className="font-weight-normal">
                       {homeInfo && homeInfo.pagesThisMonth} /{" "}
