@@ -16,6 +16,8 @@ export default function SetGoals() {
   const [pagesThisYearError, setPagesThisYearError] = useState("");
   const [pagesThisMonthError, setPagesThisMonthError] = useState("");
 
+  document.title = "set goals | bookcount";
+
   // notification for successful goal update
   const successfulUpdateNotif = () => toast("successfully updated goals!");
 

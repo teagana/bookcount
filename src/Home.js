@@ -14,6 +14,8 @@ export default function Home() {
   // loader starts as not showing
   const [showLoading, setShowLoading] = useState(false);
 
+  document.title = "home | bookcount";
+
   // for notification
   const location = useLocation();
   const successfulCreationNotif = () => toast("successfully added book!");

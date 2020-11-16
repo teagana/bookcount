@@ -9,6 +9,8 @@ export default function AddBook() {
   const [bookInfo, setBookInfo] = useState();
   const [showLoading, setShowLoading] = useState(false);
 
+  document.title = "add book | bookcount";
+
   function handleTitleChange(event) {
     setTitle(event.target.value);
   }

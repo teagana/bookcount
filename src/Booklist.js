@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 export default function Booklist() {
   const [books, setBooks] = useState();
 
+  document.title = "booklist | bookcount";
+
   // delete notification
   const successfulDeletionNotif = () => toast("successfully deleted book!");
 

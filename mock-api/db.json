@@ -103,6 +103,22 @@
       "timestamp": "2020-11-16T03:27:44.010Z",
       "pagecount": 96,
       "id": 31
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "pagecount": 96,
+      "timestamp": "2020-11-16T03:47:04.115Z",
+      "id": 32
+    },
+    {
+      "title": "\"Hello, Darkness\"",
+      "author": "\"Sandra Brown\"",
+      "genre": "None",
+      "timestamp": "2020-11-16T03:47:34.086Z",
+      "pagecount": 0,
+      "id": 33
     }
   ],
   "goals": {

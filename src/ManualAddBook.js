@@ -8,6 +8,8 @@ export default function ManualAddBook() {
   const location = useLocation();
   let history = useHistory();
 
+  document.title = "add book manually | bookcount";
+
   let title = "";
   let author = "";
   let genre = "";
