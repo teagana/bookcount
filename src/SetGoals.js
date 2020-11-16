@@ -116,6 +116,7 @@ export default function SetGoals() {
                     id="books-this-year"
                     value={booksThisYear}
                     onChange={handleBooksThisYearChange}
+                    data-testid="goal-input"
                   />
                   {/* error if anything other than 0/positive integer */}
                   <small id="error" className="text-danger">
@@ -132,6 +133,7 @@ export default function SetGoals() {
                     id="books-this-month"
                     value={booksThisMonth}
                     onChange={handleBooksThisMonthChange}
+                    data-testid="goal-input"
                   />
                   {/* error if anything other than 0/positive integer */}
                   <small id="error" className="text-danger">
@@ -152,6 +154,7 @@ export default function SetGoals() {
                     id="pages-this-year"
                     value={pagesThisYear}
                     onChange={handlePagesThisYearChange}
+                    data-testid="goal-input"
                   />
                   {/* error if anything other than 0/positive integer */}
                   <small id="error" className="text-danger">
@@ -168,6 +171,7 @@ export default function SetGoals() {
                     id="pages-this-month"
                     value={pagesThisMonth}
                     onChange={handlePagesThisMonthChange}
+                    data-testid="goal-input"
                   />
                   {/* error if anything other than 0/positive integer */}
                   <small id="error" className="text-danger">

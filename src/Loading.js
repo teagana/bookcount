@@ -8,5 +8,5 @@ export default function Loading({ color, size, animationLength, marginTop }) {
     marginTop,
   };
 
-  return <div className="loader" style={styles}></div>;
+  return <div className="loader" data-testid="loader" style={styles}></div>;
 }

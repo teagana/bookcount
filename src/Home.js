@@ -174,6 +174,7 @@ export default function Home() {
                   </span>
                 </h3>
                 <div className="mt-4">
+                  {/* turn goal green if it's been met or exceeded */}
                   <h5
                     className="pl-3"
                     style={
@@ -184,7 +185,10 @@ export default function Home() {
                     }
                   >
                     this year:{" "}
-                    <span className="font-weight-normal">
+                    <span
+                      className="font-weight-normal"
+                      data-testid="home-elements"
+                    >
                       {homeInfo && homeInfo.booksThisYear} /{" "}
                       {homeInfo && homeInfo.goals.books_this_year}
                     </span>
@@ -203,7 +207,10 @@ export default function Home() {
                     }
                   >
                     this month:{" "}
-                    <span className="font-weight-normal">
+                    <span
+                      className="font-weight-normal"
+                      data-testid="home-elements"
+                    >
                       {homeInfo && homeInfo.booksThisMonth} /{" "}
                       {homeInfo && homeInfo.goals.books_this_month}
                     </span>
@@ -219,7 +226,11 @@ export default function Home() {
               <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
                 <h3>
                   pages:{" "}
-                  <span className="font-weight-normal" id="total-pages">
+                  <span
+                    className="font-weight-normal"
+                    id="total-pages"
+                    data-testid="home-elements"
+                  >
                     {homeInfo && homeInfo.totalPages}
                   </span>
                 </h3>
@@ -234,7 +245,10 @@ export default function Home() {
                     }
                   >
                     this year:{" "}
-                    <span className="font-weight-normal">
+                    <span
+                      className="font-weight-normal"
+                      data-testid="home-elements"
+                    >
                       {homeInfo && homeInfo.pagesThisYear} /{" "}
                       {homeInfo && homeInfo.goals.pages_this_year}
                     </span>
@@ -254,7 +268,10 @@ export default function Home() {
                     }
                   >
                     this month:{" "}
-                    <span className="font-weight-normal">
+                    <span
+                      className="font-weight-normal"
+                      data-testid="home-elements"
+                    >
                       {homeInfo && homeInfo.pagesThisMonth} /{" "}
                       {homeInfo && homeInfo.goals.pages_this_month}
                     </span>
