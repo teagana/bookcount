@@ -55,6 +55,14 @@
       "pagecount": "300",
       "timestamp": "2020-11-15T23:29:00.037Z",
       "id": 9
+    },
+    {
+      "title": "\"Harry Potter and the Philosopher's Stone (Book 1)\"",
+      "author": "\"J.K. Rowling\"",
+      "genre": "\"Steampunk\"",
+      "timestamp": "2020-11-16T07:25:40.858Z",
+      "pagecount": 224,
+      "id": 10
     }
   ],
   "goals": {
