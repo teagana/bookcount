@@ -7,6 +7,7 @@ export default function AddBook() {
   const [isModalShown, setIsModalShown] = useState(false);
   const [title, setTitle] = useState("");
   const [bookInfo, setBookInfo] = useState();
+  const [showLoading, setShowLoading] = useState(false);
 
   function handleTitleChange(event) {
     setTitle(event.target.value);
@@ -16,12 +17,14 @@ export default function AddBook() {
   function handleSubmit(event) {
     event.preventDefault();
 
+    setShowLoading(true);
     // BOOK MOOCH API CALL
     getBookInfo(title).then((response) => {
       // console.log("return in add book", response[0]);
       // setBookInfo(response[0]);
       console.log("return in add book", response);
       setBookInfo(response);
+      setShowLoading(false);
     });
 
     setIsModalShown(true);
@@ -38,7 +41,11 @@ export default function AddBook() {
         <Navbar />
         {/* only show modal upon submit */}
         {isModalShown && (
-          <ConfirmBookInfo onClose={hideModal} bookInfo={bookInfo} />
+          <ConfirmBookInfo
+            onClose={hideModal}
+            bookInfo={bookInfo}
+            loading={showLoading}
+          />
         )}
 
         <div className="container">

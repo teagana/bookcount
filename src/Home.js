@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { ResponsiveLine } from "@nivo/line";
 import { getHomePageInfo } from "./api";
+import Loading from "./Loading";
 
 export default function Home() {
   const [homeInfo, setHomeInfo] = useState();
   const [bookGraphData, setBookGraphData] = useState();
   const [pageGraphData, setPageGraphData] = useState();
 
+  // loader starts as not showing
+  const [showLoading, setShowLoading] = useState(false);
+
   useEffect(() => {
+    // start the loader
+    setShowLoading(true);
+
     // get all the info from the database for this page
     getHomePageInfo().then((info) => {
       console.log(info);
@@ -23,6 +30,9 @@ export default function Home() {
     // set up the book graph data if homeInfo is filled
     if (typeof homeInfo !== "undefined") {
       formatGraphData();
+
+      // hide the loader
+      setShowLoading(false);
     }
   }, [homeInfo]);
 
@@ -125,68 +135,77 @@ export default function Home() {
     <>
       <Navbar />
       <div className="container-fluid">
-        <div className="row justify-content-center mt-5">
-          <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
-            <h3>
-              books:{" "}
-              <span className="font-weight-normal" id="total-books">
-                {homeInfo && homeInfo.totalBooks}
-              </span>
-            </h3>
-            <div className="mt-4">
-              <h5 className="pl-3">
-                this year:{" "}
-                <span className="font-weight-normal">
-                  {homeInfo && homeInfo.booksThisYear} /{" "}
-                  {homeInfo && homeInfo.goals.books_this_year}
+        {showLoading ? (
+          <Loading
+            color={"lightgray"}
+            animationLength={"1s"}
+            size={"20px"}
+            marginTop={"200px"}
+          />
+        ) : (
+          <div className="row justify-content-center mt-5">
+            <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
+              <h3>
+                books:{" "}
+                <span className="font-weight-normal" id="total-books">
+                  {homeInfo && homeInfo.totalBooks}
                 </span>
-              </h5>
-              <div id="books-this-year" className="graph">
-                {bookGraphData && thisYear(bookGraphData, "books", "set3")}
+              </h3>
+              <div className="mt-4">
+                <h5 className="pl-3">
+                  this year:{" "}
+                  <span className="font-weight-normal">
+                    {homeInfo && homeInfo.booksThisYear} /{" "}
+                    {homeInfo && homeInfo.goals.books_this_year}
+                  </span>
+                </h5>
+                <div id="books-this-year" className="graph">
+                  {bookGraphData && thisYear(bookGraphData, "books", "set3")}
+                </div>
+                <h5 className="pl-3">
+                  this month:{" "}
+                  <span className="font-weight-normal">
+                    {homeInfo && homeInfo.booksThisMonth} /{" "}
+                    {homeInfo && homeInfo.goals.books_this_month}
+                  </span>
+                </h5>
+                <h5 className="pl-3 mt-3">
+                  most-read genre:{" "}
+                  <span className="font-weight-normal">
+                    {homeInfo && homeInfo.mostReadGenre.replace(/"/g, "")}
+                  </span>
+                </h5>
               </div>
-              <h5 className="pl-3">
-                this month:{" "}
-                <span className="font-weight-normal">
-                  {homeInfo && homeInfo.booksThisMonth} /{" "}
-                  {homeInfo && homeInfo.goals.books_this_month}
+            </div>
+            <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
+              <h3>
+                pages:{" "}
+                <span className="font-weight-normal" id="total-pages">
+                  {homeInfo && homeInfo.totalPages}
                 </span>
-              </h5>
-              <h5 className="pl-3 mt-3">
-                most-read genre:{" "}
-                <span className="font-weight-normal">
-                  {homeInfo && homeInfo.mostReadGenre.replace(/"/g, "")}
-                </span>
-              </h5>
+              </h3>
+              <div className="mt-4">
+                <h5 className="pl-3">
+                  this year:{" "}
+                  <span className="font-weight-normal">
+                    {homeInfo && homeInfo.pagesThisYear} /{" "}
+                    {homeInfo && homeInfo.goals.pages_this_year}
+                  </span>
+                </h5>
+                <div id="page-this-year" className="graph">
+                  {pageGraphData && thisYear(pageGraphData, "pages", "accent")}
+                </div>
+                <h5 className="pl-3">
+                  this month:{" "}
+                  <span className="font-weight-normal">
+                    {homeInfo && homeInfo.pagesThisMonth} /{" "}
+                    {homeInfo && homeInfo.goals.pages_this_month}
+                  </span>
+                </h5>
+              </div>
             </div>
           </div>
-          <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
-            <h3>
-              pages:{" "}
-              <span className="font-weight-normal" id="total-pages">
-                {homeInfo && homeInfo.totalPages}
-              </span>
-            </h3>
-            <div className="mt-4">
-              <h5 className="pl-3">
-                this year:{" "}
-                <span className="font-weight-normal">
-                  {homeInfo && homeInfo.pagesThisYear} /{" "}
-                  {homeInfo && homeInfo.goals.pages_this_year}
-                </span>
-              </h5>
-              <div id="page-this-year" className="graph">
-                {pageGraphData && thisYear(pageGraphData, "pages", "accent")}
-              </div>
-              <h5 className="pl-3">
-                this month:{" "}
-                <span className="font-weight-normal">
-                  {homeInfo && homeInfo.pagesThisMonth} /{" "}
-                  {homeInfo && homeInfo.goals.pages_this_month}
-                </span>
-              </h5>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </>
   );

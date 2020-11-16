@@ -2,8 +2,9 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { useHistory } from "react-router-dom";
 import { createBook } from "./api";
+import Loading from "./Loading";
 
-export default function ConfirmBookInfo({ onClose, bookInfo }) {
+export default function ConfirmBookInfo({ onClose, bookInfo, loading }) {
   let history = useHistory();
 
   // user indicated they wanted to change some of the book info;
@@ -22,9 +23,8 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
   // user doesn't want to change any of bookmooch's info
   // take them back to the homepage
   function acceptBookInfo() {
-    // date shenanigans
+    // today's date for the timestamp
     const today = new Date(Date.now());
-    console.log(today.getMonth(), today.getFullYear());
 
     createBook({
       title: JSON.stringify(bookInfo.Title),
@@ -41,10 +41,11 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
   return createPortal(
     <>
       <div className="modal-backdrop show"></div>
-      <div className="modal" tabIndex="-1" style={{ display: "block" }}>
+      <div className="modal mt-5" tabIndex="-1" style={{ display: "block" }}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
+              <h5 className="modal-title">does this info look correct?</h5>
               <button
                 type="button"
                 className="close"
@@ -55,27 +56,36 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+
+            {loading ? (
+              <Loading
+                color={"gray"}
+                animationLength={"1s"}
+                size={"20px"}
+                marginTop={"100px"}
+              />
+            ) : (
+              <div className="modal-body">
+                <p>
+                  <span className="font-weight-bold">title:</span>{" "}
+                  {bookInfo && bookInfo.Title}
+                </p>
+                <p>
+                  <span className="font-weight-bold">author:</span>{" "}
+                  {bookInfo && bookInfo.Author}
+                </p>
+                <p>
+                  <span className="font-weight-bold">genre:</span>{" "}
+                  {bookInfo && bookInfo.Topics && bookInfo.Topics[0]}
+                </p>
+                <p>
+                  <span className="font-weight-bold">pagecount:</span>{" "}
+                  {bookInfo && bookInfo.NumberOfPages}
+                </p>
+              </div>
+            )}
             {/* info from bookmooch api call */}
-            <div className="modal-body">
-              <p>
-                <span className="font-weight-bold">title:</span>{" "}
-                {bookInfo && bookInfo.Title}
-              </p>
-              <p>
-                <span className="font-weight-bold">author:</span>{" "}
-                {bookInfo && bookInfo.Author}
-              </p>
-              <p>
-                <span className="font-weight-bold">genre:</span>{" "}
-                {bookInfo && bookInfo.Topics && bookInfo.Topics[0]}
-              </p>
-              <p>
-                <span className="font-weight-bold">pagecount:</span>{" "}
-                {bookInfo && bookInfo.NumberOfPages}
-              </p>
-              <br />
-              <p>does this info look correct?</p>
-            </div>
+
             <div className="modal-footer">
               <button
                 type="button"
