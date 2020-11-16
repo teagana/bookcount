@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createBook } from "./api";
 import Loading from "./Loading";
 
-export default function ConfirmBookInfo({ onClose, bookInfo, loading, notif }) {
+export default function ConfirmBookInfo({ onClose, bookInfo, loading }) {
   let history = useHistory();
 
   // user indicated they wanted to change some of the book info;

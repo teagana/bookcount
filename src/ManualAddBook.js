@@ -3,7 +3,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import { createBook } from "./api";
 import Navbar from "./Navbar";
 
-export default function ManualAddBook({ notif }) {
+export default function ManualAddBook() {
   const location = useLocation();
   let history = useHistory();
 
