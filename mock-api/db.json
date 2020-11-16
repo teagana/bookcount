@@ -47,12 +47,52 @@
       "pagecount": 400,
       "timestamp": "2020-06-15T20:43:51.958Z",
       "id": 8
+    },
+    {
+      "title": "Lord of the Flies",
+      "author": "William Golding",
+      "genre": "Fiction",
+      "pagecount": "300",
+      "timestamp": "2020-11-15T23:29:00.037Z",
+      "id": 9
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "timestamp": "2020-11-16T00:07:06.353Z",
+      "pagecount": 96,
+      "id": 10
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "timestamp": "2020-11-16T00:08:33.433Z",
+      "pagecount": 96,
+      "id": 11
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "timestamp": "2020-11-16T00:08:46.367Z",
+      "pagecount": 96,
+      "id": 12
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "timestamp": "2020-11-16T00:09:28.637Z",
+      "pagecount": 96,
+      "id": 13
     }
   ],
   "goals": {
-    "books_this_year": 0,
-    "books_this_month": 0,
-    "pages_this_year": 9,
-    "pages_this_month": 1
+    "books_this_year": 24,
+    "books_this_month": 2,
+    "pages_this_year": 6000,
+    "pages_this_month": 500
   }
 }

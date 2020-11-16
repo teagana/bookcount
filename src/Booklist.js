@@ -33,12 +33,14 @@ export default function Booklist() {
           {books &&
             books.map((book) => {
               return (
+                // replace is to make sure JSON stringify doesn't leave
+                // extra quotes in the list
                 <div key={book.id} className="list-item mt-2">
-                  <span>{book.title}</span>
+                  <span>{book.title.replace(/"/g, "")}</span>
                   {" | "}
-                  <span>{book.author}</span>
+                  <span>{book.author.replace(/"/g, "")}</span>
                   {" | "}
-                  <span>{book.genre}</span>
+                  <span>{book.genre.replace(/"/g, "")}</span>
                   {" | "}
                   <span className="pr-1">{book.pagecount}</span>
                   {" / "}

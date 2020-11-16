@@ -141,9 +141,9 @@ export default function ManualAddBook() {
 
       // createBook API call!!
       createBook({
-        title,
-        author,
-        genre,
+        title: JSON.stringify(title),
+        author: JSON.stringify(author),
+        genre: JSON.stringify(genre),
         pagecount,
         timestamp: today,
       }).then((response) => {

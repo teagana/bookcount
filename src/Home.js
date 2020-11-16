@@ -1,66 +1,82 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { ResponsiveLine } from "@nivo/line";
 import { getHomePageInfo } from "./api";
 
 export default function Home() {
+  const [homeInfo, setHomeInfo] = useState();
+  const [bookGraphData, setBookGraphData] = useState();
+  const [pageGraphData, setPageGraphData] = useState();
+
   useEffect(() => {
+    // get all the info from the database for this page
     getHomePageInfo().then((info) => {
       console.log(info);
+
+      // get the data necessary for home
+      setHomeInfo(info);
     });
   }, []);
 
-  let data = [
-    {
-      id: "",
-      data: [
-        {
-          x: "jan",
-          y: 6,
-        },
-        {
-          x: "feb",
-          y: 110,
-        },
-        {
-          x: "mar",
-          y: 192,
-        },
-        {
-          x: "apr",
-          y: 1000,
-        },
-        {
-          x: "jun",
-          y: 140,
-        },
-        {
-          x: "jul",
-          y: 252,
-        },
-        {
-          x: "aug",
-          y: 139,
-        },
-        {
-          x: "sep",
-          y: 45,
-        },
-        {
-          x: "oct",
-          y: 218,
-        },
-        {
-          x: "nov",
-          y: 57,
-        },
-        {
-          x: "dec",
-          y: 273,
-        },
-      ],
-    },
-  ];
+  // use effect for setting up graph data
+  useEffect(() => {
+    // set up the book graph data if homeInfo is filled
+    if (typeof homeInfo !== "undefined") {
+      formatGraphData();
+    }
+  }, [homeInfo]);
+
+  function formatGraphData() {
+    const months = [
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "may",
+      "jun",
+      "jul",
+      "aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec",
+    ];
+    let booksPerMonthData = [];
+    let pagesPerMonthData = [];
+
+    // format the data for books/pages per month into format for nivo library
+    for (let i = 0; i < months.length; i++) {
+      booksPerMonthData.push({
+        x: months[i],
+        y: homeInfo.booksPerMonth[i],
+      });
+
+      pagesPerMonthData.push({
+        x: months[i],
+        y: homeInfo.pagesPerMonth[i],
+      });
+    }
+
+    let booksGraphData = [
+      {
+        id: "",
+        data: booksPerMonthData,
+      },
+    ];
+
+    let pagesGraphData = [
+      {
+        id: "",
+        data: pagesPerMonthData,
+      },
+    ];
+
+    // set the data into state for graphs to use
+    setBookGraphData(booksGraphData);
+    setPageGraphData(pagesGraphData);
+  }
+
+  // function for generating the graphs (from nivo library)
   const thisYear = (data, yAxisName, colorScheme) => (
     <ResponsiveLine
       data={data}
@@ -94,6 +110,7 @@ export default function Home() {
         legend: yAxisName,
         legendOffset: -50,
         legendPosition: "middle",
+        format: (e) => Math.floor(e) === e && e,
       }}
       pointSize={4}
       pointColor={{ theme: "background" }}
@@ -101,32 +118,6 @@ export default function Home() {
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
-      legends={[
-        {
-          anchor: "bottom",
-          direction: "column",
-          justify: false,
-          translateX: 160,
-          translateY: 50,
-          itemsSpacing: 0,
-          itemDirection: "left-to-right",
-          itemWidth: 80,
-          itemHeight: 20,
-          itemOpacity: 0, // make key disappear
-          symbolSize: 12,
-          symbolShape: "circle",
-          symbolBorderColor: "rgba(0, 0, 0, .5)",
-          effects: [
-            // {
-            //   on: "hover",
-            //   style: {
-            //     itemBackground: "rgba(0, 0, 0, .03)",
-            //     itemOpacity: 1,
-            //   },
-            // },
-          ],
-        },
-      ]}
     />
   );
 
@@ -134,39 +125,64 @@ export default function Home() {
     <>
       <Navbar />
       <div className="container-fluid">
-        <div className="row justify-content-center mt-4">
-          <div className="col-6 pl-5">
+        <div className="row justify-content-center mt-5">
+          <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
             <h3>
-              books: <span id="total-books">x</span>
+              books:{" "}
+              <span className="font-weight-normal" id="total-books">
+                {homeInfo && homeInfo.totalBooks}
+              </span>
             </h3>
             <div className="mt-4">
               <h5 className="pl-3">
-                this year: <span>x / y</span>
+                this year:{" "}
+                <span className="font-weight-normal">
+                  {homeInfo && homeInfo.booksThisYear} /{" "}
+                  {homeInfo && homeInfo.goals.books_this_year}
+                </span>
               </h5>
               <div id="books-this-year" className="graph">
-                {thisYear(data, "books", "set3")}
+                {bookGraphData && thisYear(bookGraphData, "books", "set3")}
               </div>
               <h5 className="pl-3">
-                this month: <span>x / y</span>
+                this month:{" "}
+                <span className="font-weight-normal">
+                  {homeInfo && homeInfo.booksThisMonth} /{" "}
+                  {homeInfo && homeInfo.goals.books_this_month}
+                </span>
               </h5>
               <h5 className="pl-3 mt-3">
-                most-read genre: <span>_____</span>
+                most-read genre:{" "}
+                <span className="font-weight-normal">
+                  {homeInfo && homeInfo.mostReadGenre.replace(/"/g, "")}
+                </span>
               </h5>
             </div>
           </div>
-          <div className="col-6 pl-5">
+          <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
             <h3>
-              pages: <span id="total-pages">x</span>
+              pages:{" "}
+              <span className="font-weight-normal" id="total-pages">
+                {homeInfo && homeInfo.totalPages}
+              </span>
             </h3>
             <div className="mt-4">
               <h5 className="pl-3">
-                this year: <span>x / y</span>
+                this year:{" "}
+                <span className="font-weight-normal">
+                  {homeInfo && homeInfo.pagesThisYear} /{" "}
+                  {homeInfo && homeInfo.goals.pages_this_year}
+                </span>
               </h5>
               <div id="page-this-year" className="graph">
-                {thisYear(data, "pages", "accent")}
+                {pageGraphData && thisYear(pageGraphData, "pages", "accent")}
               </div>
               <h5 className="pl-3">
-                this month: <span>x / y</span>
+                this month:{" "}
+                <span className="font-weight-normal">
+                  {homeInfo && homeInfo.pagesThisMonth} /{" "}
+                  {homeInfo && homeInfo.goals.pages_this_month}
+                </span>
               </h5>
             </div>
           </div>

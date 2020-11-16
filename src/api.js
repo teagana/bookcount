@@ -147,6 +147,8 @@ export function getHomePageInfo() {
         pagesThisYear,
         pagesThisMonth: pagesPerMonth[today.getMonth()],
         goals,
+        booksPerMonth,
+        pagesPerMonth,
       };
 
       return info;

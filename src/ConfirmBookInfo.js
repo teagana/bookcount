@@ -27,9 +27,9 @@ export default function ConfirmBookInfo({ onClose, bookInfo }) {
     console.log(today.getMonth(), today.getFullYear());
 
     createBook({
-      title: bookInfo.Title,
-      author: bookInfo.Author,
-      genre: bookInfo.Topics ? bookInfo.Topics[0] : "None",
+      title: JSON.stringify(bookInfo.Title),
+      author: JSON.stringify(bookInfo.Author),
+      genre: bookInfo.Topics ? JSON.stringify(bookInfo.Topics[0]) : "None",
       timestamp: today,
       pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
     }).then((response) => {
