@@ -60,15 +60,23 @@
       "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
       "author": "\"Abby Klein\"",
       "genre": "\"Children's Books\"",
-      "timestamp": "2020-11-16T00:07:06.353Z",
+      "timestamp": "2020-11-16T02:37:11.187Z",
       "pagecount": 96,
-      "id": 10
+      "id": 16
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "timestamp": "2020-11-16T02:37:30.942Z",
+      "pagecount": 96,
+      "id": 17
     }
   ],
   "goals": {
     "books_this_year": 24,
     "books_this_month": 2,
-    "pages_this_year": 6000,
+    "pages_this_year": 6001,
     "pages_this_month": 500
   }
 }

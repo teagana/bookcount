@@ -3,7 +3,7 @@ import { getBookInfo } from "./api";
 import ConfirmBookInfo from "./ConfirmBookInfo";
 import Navbar from "./Navbar";
 
-export default function AddBook() {
+export default function AddBook({ notif }) {
   const [isModalShown, setIsModalShown] = useState(false);
   const [title, setTitle] = useState("");
   const [bookInfo, setBookInfo] = useState();
@@ -45,6 +45,7 @@ export default function AddBook() {
             onClose={hideModal}
             bookInfo={bookInfo}
             loading={showLoading}
+            notif={notif}
           />
         )}
 

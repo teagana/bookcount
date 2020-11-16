@@ -1,9 +1,13 @@
 import { React, useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { getAllBooks, destroyBook } from "./api";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Booklist() {
   const [books, setBooks] = useState();
+
+  // delete notification
+  const successfulDeletionNotif = () => toast("successfully deleted book!");
 
   useEffect(() => {
     getAllBooks().then((books) => {
@@ -20,6 +24,7 @@ export default function Booklist() {
       // refresh the books
       getAllBooks().then((books) => {
         setBooks(books);
+        successfulDeletionNotif(); // notify of successful deletion
       });
     });
   }
@@ -28,6 +33,7 @@ export default function Booklist() {
     <>
       <Navbar />
       <div className="container mt-5">
+        <ToastContainer />
         <h3 className="text-left">books i've read:</h3>
         <div id="list">
           {books &&

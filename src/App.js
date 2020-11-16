@@ -6,8 +6,13 @@ import Home from "./Home";
 import ManualAddBook from "./ManualAddBook";
 import PageNotFound from "./PageNotFound";
 import SetGoals from "./SetGoals";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  // notifications
+  const successfulCreationNotif = () => toast("successfully added book!");
+
   return (
     <Router>
       <Switch>
@@ -17,11 +22,11 @@ function App() {
         </Route>
         <Route path="/add_book" exact={true}>
           {/* enter a title page */}
-          <AddBook />
+          <AddBook notif={successfulCreationNotif} />
         </Route>
         <Route path="/add_book_manual" exact={true}>
           {/* manual add book page */}
-          <ManualAddBook />
+          <ManualAddBook notif={successfulCreationNotif} />
         </Route>
         <Route path="/set_goals" exact={true}>
           {/* edit goals page */}

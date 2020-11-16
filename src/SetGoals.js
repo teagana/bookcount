@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { getAllGoals, saveGoals } from "./api";
 import Navbar from "./Navbar";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function SetGoals() {
   // use states for all four of the goals
@@ -14,6 +15,9 @@ export default function SetGoals() {
   const [booksThisMonthError, setBooksThisMonthError] = useState("");
   const [pagesThisYearError, setPagesThisYearError] = useState("");
   const [pagesThisMonthError, setPagesThisMonthError] = useState("");
+
+  // notification for successful goal update
+  const successfulUpdateNotif = () => toast("successfully updated goals!");
 
   useEffect(() => {
     getAllGoals().then((response) => {
@@ -60,6 +64,7 @@ export default function SetGoals() {
       // make api call to save goal inputs
       saveGoals(goals).then((response) => {
         console.log(response);
+        successfulUpdateNotif(); // notify user of successful goal update
       });
     }
 
@@ -92,6 +97,7 @@ export default function SetGoals() {
     <>
       <Navbar />
       <div className="container mt-5">
+        <ToastContainer />
         <h3 className="text-left">my goals</h3>
         <div className="mt-5">
           <form id="goals" className="mx-auto" onSubmit={handleSubmit}>

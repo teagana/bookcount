@@ -3,7 +3,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import { createBook } from "./api";
 import Navbar from "./Navbar";
 
-export default function ManualAddBook() {
+export default function ManualAddBook({ notif }) {
   const location = useLocation();
   let history = useHistory();
 
@@ -147,7 +147,10 @@ export default function ManualAddBook() {
         pagecount,
         timestamp: today,
       }).then((response) => {
-        history.push("/"); // go back to home page
+        // tell the home page the user just successfully added a book
+        history.push("/", {
+          successNotif: true,
+        }); // go back to home page
       });
     }
   }

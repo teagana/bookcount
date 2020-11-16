@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createBook } from "./api";
 import Loading from "./Loading";
 
-export default function ConfirmBookInfo({ onClose, bookInfo, loading }) {
+export default function ConfirmBookInfo({ onClose, bookInfo, loading, notif }) {
   let history = useHistory();
 
   // user indicated they wanted to change some of the book info;
@@ -34,7 +34,10 @@ export default function ConfirmBookInfo({ onClose, bookInfo, loading }) {
       pagecount: bookInfo.NumberOfPages ? Number(bookInfo.NumberOfPages) : 0,
     }).then((response) => {
       onClose();
-      history.push("/"); // go back to home page
+
+      history.push("/", {
+        successNotif: true,
+      }); // go back to home page
     });
   }
 
