@@ -40,9 +40,12 @@ export default function Home() {
       // hide the loader
       setShowLoading(false);
 
+      console.log("notif", location.state);
+
       // show notification
       if (typeof location.state !== "undefined") {
         if (location.state.successNotif) {
+          console.log("in if statement");
           successfulCreationNotif();
           location.state.successNotif = false;
         }
@@ -158,8 +161,9 @@ export default function Home() {
           />
         ) : (
           <>
+            <ToastContainer />
+
             <div className="row justify-content-center mt-5">
-              <ToastContainer />
               <div className="col-6-lg col-12-sm pl-5 mb-5 pr-5">
                 <h3>
                   books:{" "}

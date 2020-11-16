@@ -60,39 +60,55 @@
       "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
       "author": "\"Abby Klein\"",
       "genre": "\"Children's Books\"",
-      "timestamp": "2020-11-16T02:37:11.187Z",
-      "pagecount": 96,
-      "id": 16
-    },
-    {
-      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
-      "author": "\"Abby Klein\"",
-      "genre": "\"Children's Books\"",
-      "timestamp": "2020-11-16T02:46:35.722Z",
-      "pagecount": 96,
-      "id": 17
-    },
-    {
-      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
-      "author": "\"Abby Klein\"",
-      "genre": "\"Children's Books\"",
-      "timestamp": "2020-11-16T02:46:45.656Z",
-      "pagecount": 96,
-      "id": 18
-    },
-    {
-      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
-      "author": "\"Abby Klein\"",
-      "genre": "\"Children's Books\"",
       "pagecount": 96,
       "timestamp": "2020-11-16T02:47:12.498Z",
       "id": 19
+    },
+    {
+      "title": "\"UGH\"",
+      "author": "\"Arthur Yorinks\"",
+      "genre": "\"\"",
+      "pagecount": 0,
+      "timestamp": "2020-11-16T02:52:49.744Z",
+      "id": 20
+    },
+    {
+      "title": "\"Hello, Darkness\"",
+      "author": "\"Sandra Brown\"",
+      "genre": "\"something\"",
+      "pagecount": "80",
+      "timestamp": "2020-11-16T03:18:05.276Z",
+      "id": 23
+    },
+    {
+      "title": "\"Hello, Darkness\"",
+      "author": "\"Sandra Brown\"",
+      "genre": "\"idk\"",
+      "pagecount": "80",
+      "timestamp": "2020-11-16T03:22:14.002Z",
+      "id": 24
+    },
+    {
+      "title": "\"Hello, Darkness\"",
+      "author": "\"Sandra Brown\"",
+      "genre": "\"yikes\"",
+      "pagecount": "838",
+      "timestamp": "2020-11-16T03:23:50.529Z",
+      "id": 25
+    },
+    {
+      "title": "\"Yikes Bikes! (Ready, Freddy!)\"",
+      "author": "\"Abby Klein\"",
+      "genre": "\"Children's Books\"",
+      "timestamp": "2020-11-16T03:27:44.010Z",
+      "pagecount": 96,
+      "id": 31
     }
   ],
   "goals": {
     "books_this_year": 24,
     "books_this_month": 2,
-    "pages_this_year": 6000,
+    "pages_this_year": 0,
     "pages_this_month": 500
   }
 }
